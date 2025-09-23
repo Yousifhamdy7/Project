@@ -118,4 +118,33 @@ search_file() {
 	fi 
 	pause
 }
+change_permissions() {
+	read -p "Enter file/dir:" target
+	read -p "Enter permisson mode:" mode
+	chmod "$mode" "$target" && echo "Permissions updated."
+	pause
+}
+change_ownership() {
+	read -p "Enter file/directory:" target
+	read -p "Enter new owner:" owner
+	sudo chown "$owner" "$target" && echo "Ownership updated."
+	pause
+}
+backup_files() {
+	read -p "Enter file/dir to backup:" target
+	if [ -e "$target" ]; then
+		tar -czf "$BACKUP_DIR/backup_$ts.tar.gz" "$target" && echo "Backup saved at $BACKUP_DIR/backup_$ts.tar.gz"
+    else
+        echo "Target does not exist!"
+    fi
+    pause
+}
+restore_backup() {
+	read -p "Enter backup file path:" backup
+	if [ -f "$backup" ]; then
+		tar -xzf "$backup" -C ./ && echo "Backup restored."
+	else "Backup file not found!"
+	fi
+	pause
+}
 

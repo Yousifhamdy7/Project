@@ -1,0 +1,21 @@
+===== System Report - Tue Sep 23 10:07:21 PM EEST 2025 =====
+System Information:
+OS: GNU/Linux
+Hostname: Devops
+Uptime: up 59 minutes
+Date: Tue Sep 23 10:07:21 PM EEST 2025
+
+CPU Usage:
+0.49%
+
+Memory Usage:
+Used: 2.1Gi / Total: 7.8Gi
+
+Disk Usage:
+Filesystem      Size  Used Avail Use%
+tmpfs           795M  1.6M  793M   1%
+/dev/sda2        40G   13G   25G  35%
+tmpfs           3.9G   60M  3.9G   2%
+tmpfs           5.0M  8.0K  5.0M   1%
+tmpfs           795M  128K  795M   1%
+/dev/sr0        6.0G  6.0G     0 100%

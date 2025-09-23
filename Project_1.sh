@@ -85,4 +85,37 @@ move_file() {
 	fi
 	pause
 }
+rename_file() {
+    read -p "Enter current filename: " old
+    read -p "Enter new filename: " new
+    if [ -e "$old" ]; then
+        if confirm; then
+            mv "$old" "$new" && echo "Renamed successfully."
+        fi
+    else
+        echo "File does not exist!"
+    fi
+    pause
+}
+delete_file() {
+	read -p "Enter file/dir to delete:" target
+	if [-e "$target" ]; then
+		if confirm; then
+			rm -rf "$target" && echo "Deleted.."
+		fi 
+	else
+		echo "File/directory does not exist."
+	fi 
+	pause
+}
+search_file() {
+	read -p "Enter directory to search:" dir
+	read -p "Enter filename pattern:" pattern
+	if [-d "$dir" ]; then
+		find "$dir" -name "$pattern"
+	else
+		echo "Directory not found"
+	fi 
+	pause
+}
 

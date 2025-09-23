@@ -64,4 +64,25 @@ create_dir() {
         mkdir "$dirname" && echo "Directory '$dirname' created."
     fi
     pause
-}}
+}
+copy_file() {
+	read -p "Enter file location:" src
+	read -p "Enter destination:" dest
+	if [ -e "$src"]; then
+		cp -r "$src" "$dest" && echo "Copied successfully."
+	else
+		echo "Source does not exist."
+	fi
+	pause
+}
+move_file() {
+	read -p "Enter file/dir:" src
+	read -p "Enter destination:" dest
+	if [ -e "$src" ]; then
+		mv "$src" "$dest" && echo "Moved successfully."
+	else
+		echo "Source does not exist."
+	fi
+	pause
+}
+

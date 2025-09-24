@@ -1,0 +1,21 @@
+Project: System & File Management Tool
+
+Description:
+This Bash script provides two main functionalities:
+1. File Management (create, copy, move, rename, delete, search, permissions, ownership, backup/restore).
+2. System Monitoring (system info, CPU, memory, disk usage, and reports).
+
+Features:
+- Interactive menu for easy navigation.
+- File operations: create, copy, move, rename, delete.
+- Search files by name/pattern.
+- Change file permissions and ownership.
+- Backup and restore using tar.
+- Display system info (OS, hostname, uptime, date/time).
+- Monitor CPU, memory, and disk usage.
+- Generate and save system reports in logs/.
+
+Notes:
+- Backups are stored in the "backups/" folder.
+- Reports are stored in the "logs/" folder.
+

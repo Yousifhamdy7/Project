@@ -1,4 +1,5 @@
-#!bin/bash
+#!/usr/bin/bash
+
 	
 LOG_DIR="./logs"
 BACKUP_DIR="./backups"
@@ -16,19 +17,6 @@ confirm(){
 	esac
 }
 
-#--- FILE MANAGMENT FUNCTIONS
-
-create file(){
-read -p "Enter file name: " filename
-if [-e "$filename"]; then
-	echo "File already exists!"
-else
-	touch "$filename" && echo "File '$filename' created."
-fi
-LOG_DIR="./logs"
-BACKUP_DIR="./backups"
-mkdir -p "$LOG_DIR" "$BACKUP_DIR"
-
 # --- Utility Functions ---
 pause() {
     read -p "Press [Enter] key to continue..."
@@ -41,19 +29,19 @@ confirm() {
         *) echo "Operation cancelled."; return 1 ;;
     esac
 }
-
-# ==============================
-# FILE MANAGEMENT FUNCTIONS
-# ==============================
+#--- FILE MANAGMENT FUNCTIONS
 
 create_file() {
-    read -p "Enter filename: " filename
-    if [ -e "$filename" ]; then
+read -p "Enter file name: " filename
+if [-e "$filename"]; then
         echo "File already exists!"
-    else
+else
         touch "$filename" && echo "File '$filename' created."
-    fi
-    pause
+fi
+LOG_DIR="./logs"
+BACKUP_DIR="./backups"
+mkdir -p "$LOG_DIR" "$BACKUP_DIR"
+
 }
 
 create_dir() {
@@ -253,4 +241,22 @@ system_monitoring_menu() {
         esac
     done
 }
+
+#Main Menu..........
+#
+#
+while true; do
+	clear
+	echo "====== System & File Managment Tool ==="
+	echo "1. File Mangement"
+	echo "2. System Monitoring"
+	echo 3. "Exit"
+	read -p "Choose an option [1-3]: " choice
+	case $choice in
+		1) file_management_menu ;;
+		2) system_monitoring_menu ;;
+		3) echo "Exiting..."; exit 0 ;;
+		*) echo "Invalid choice."; pause ;;
+	esac
+done
 

@@ -148,3 +148,47 @@ restore_backup() {
 	pause
 }
 
+
+
+
+
+#System Monitoring Funcitons...
+
+system_info() {
+    echo "System Information:"
+    echo "OS: $(uname -o)"
+    echo "Hostname: $(hostname)"
+    echo "Uptime: $(uptime -p)"
+    echo "Date: $(date)"
+}
+cpu_usage() {
+    echo "CPU Usage:"
+    mpstat 1 1 | awk '/Average:/ {print 100 - $NF"%"}'
+}
+
+memory_usage() {
+    echo "Memory Usage:"
+    free -h | awk 'NR==2{printf "Used: %s / Total: %s\n", $3,$2}'
+}
+
+disk_usage() {
+    echo "Disk Usage:"
+    df -h --output=source,size,used,avail,pcent
+}
+
+generate_report() {
+    report="$LOG_DIR/system_report_$(date +%Y%m%d_%H%M%S).log"
+    {
+        echo "===== System Report - $(date) ====="
+        system_info
+        echo
+        cpu_usage
+        echo
+        memory_usage
+        echo
+        disk_usage
+    } > "$report"
+    echo "Report generated at $report"
+    pause
+}
+

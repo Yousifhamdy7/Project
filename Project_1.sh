@@ -192,3 +192,65 @@ generate_report() {
     pause
 }
 
+
+#MENUS.....
+#
+#
+file_management_menu() {
+	while true; do
+		clear
+		echo
+		echo "====== File Management ======"
+        echo "1. Create File"
+        echo "2. Create Directory"
+        echo "3. Copy File/Directory"
+        echo "4. Move File/Directory"
+        echo "5. Rename File/Directory"
+        echo "6. Delete File/Directory"
+        echo "7. Search File"
+        echo "8. Change Permissions"
+        echo "9. Change Ownership"
+        echo "10. Backup"
+        echo "11. Restore Backup"
+        echo "12. Back to Main Menu"
+        read -p "Choose an option [1-12]: " choice
+        case $choice in
+            1) create_file ;;
+            2) create_dir ;;
+            3) copy_file ;;
+            4) move_file ;;
+            5) rename_file ;;
+            6) delete_file ;;
+            7) search_file ;;
+            8) change_permissions ;;
+            9) change_ownership ;;
+            10) backup_files ;;
+            11) restore_backup ;;
+            12) break ;;
+            *) echo "Invalid choice."; pause ;;
+        esac
+    done
+}
+system_monitoring_menu() {
+    while true; do
+        clear
+        echo "====== System Monitoring ======"
+        echo "1. System Info"
+        echo "2. CPU Usage"
+        echo "3. Memory Usage"
+        echo "4. Disk Usage"
+        echo "5. Generate Report"
+        echo "6. Back to Main Menu"
+        read -p "Choose an option [1-6]: " choice
+        case $choice in
+            1) system_info; pause ;;
+            2) cpu_usage; pause ;;
+            3) memory_usage; pause ;;
+            4) disk_usage; pause ;;
+            5) generate_report ;;
+            6) break ;;
+            *) echo "Invalid choice."; pause ;;
+        esac
+    done
+}
+
